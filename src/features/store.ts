@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setAutoFreeze } from 'immer';
 
-import resultsListReducer from 'features/resultsList/resultsListSlice';
+import searchReducer from 'features/search/searchSlice';
 
 setAutoFreeze(false);
 
 const store = configureStore({
   reducer: {
-    resultsList: resultsListReducer
+    search: searchReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     immutableCheck: false,

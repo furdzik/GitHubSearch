@@ -2,8 +2,9 @@ import { Item } from './others';
 
 export interface IResultsList {
   loading: boolean;
-  idsList: number[];
   list: Item[];
-  canLoadMore: boolean;
-  limit: number;
+  count: number;
+  page: number;
+  allPages: number;
+  incompleteResults: boolean;
 }

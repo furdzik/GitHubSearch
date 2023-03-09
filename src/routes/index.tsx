@@ -8,7 +8,7 @@ import {
 
 import Layout from 'components/Layout';
 
-import ResultsList from 'features/resultsList';
+import Search from 'features/search';
 
 interface RouterWrapperProps {
   children: JSX.Element;
@@ -35,7 +35,7 @@ const RoutesConfig = (): JSX.Element => (
           path="/"
           element={(
             <Layout>
-              <ResultsList />
+              <Search />
             </Layout>
           )}
         />

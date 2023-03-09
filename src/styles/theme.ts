@@ -1,4 +1,5 @@
 import { Theme } from '@emotion/react';
+import { createTheme } from '@mui/material/styles';
 import _map from 'lodash/map';
 
 import { colors, typography } from './basic';
@@ -49,3 +50,23 @@ export const theme: Theme = {
     transition: 'all .3s ease-in-out'
   }
 };
+
+const materialTheme = {
+  palette: {
+    primary: {
+      main: colors.color.secondary
+    },
+    secondary: {
+      main: colors.color.primary
+    },
+    background: {
+      default: theme.colorMono.white
+    }
+  },
+  typography: {
+    fontFamily: baseFontFamily,
+    htmlFontSize: 10
+  }
+};
+
+export const muiTheme = createTheme(materialTheme);

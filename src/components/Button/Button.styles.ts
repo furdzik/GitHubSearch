@@ -5,6 +5,7 @@ import { hexToRgbMixin } from 'styles/mixins';
 
 interface WrapperProps {
   variant: 'primary' | 'secondary' | undefined;
+  disabled: boolean | undefined;
 }
 
 const Wrapper = styled.a<WrapperProps>`
@@ -40,6 +41,21 @@ const Wrapper = styled.a<WrapperProps>`
     &:focus {
       background: ${hexToRgbMixin(props.theme.color.quaternary, 0.2)};
     }
+  `};
+
+  ${(props) => props.disabled && css`
+    pointer-events: none;
+
+    ${props.variant === 'primary' && css`
+      background: ${props.theme.color.quaternary};
+      color: ${props.theme.colorMono.white};
+    `};
+
+    ${props.variant === 'secondary' && css`
+      background: transparent;
+      border: .2rem solid ${props.theme.color.quaternary};
+      color: ${props.theme.colorMono.black};
+    `};
   `};
 `;
 

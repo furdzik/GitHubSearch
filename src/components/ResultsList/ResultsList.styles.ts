@@ -4,6 +4,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
+  margin-bottom: 3rem;
 `;
 
 const NoItemsWrapper = styled.div`

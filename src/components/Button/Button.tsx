@@ -11,15 +11,19 @@ export interface ButtonProps {
   component?: 'inside-link' | 'outside-link' | 'button' | undefined;
   href?: string | undefined;
   onClick?: () => void;
+  type?: 'submit' | 'button';
   target?: '_blank' | '_self' | '_parent' | '_top';
   variant?: 'primary' | 'secondary' | undefined;
+  disabled?: boolean;
 }
 const defaultProps = {
   className: '',
-  component: 'outside-link',
+  component: 'button',
   href: '',
+  type: 'button',
   target: '',
-  variant: 'primary'
+  variant: 'primary',
+  disabled: false
 };
 
 const Button = (props: ButtonProps) => {
@@ -42,11 +46,13 @@ const Button = (props: ButtonProps) => {
   return (
     <Wrapper
       as={getComponent()}
+      type={props.component === 'button' ? props.type : ''}
       className={props.className}
       href={props.component === 'outside-link' ? props.href : ''}
       target={props.component === 'outside-link' ? props.target : ''}
       variant={props.variant}
       onClick={props.onClick}
+      disabled={props.disabled}
     >
       {props.children}
     </Wrapper>
