@@ -44,17 +44,21 @@ const Wrapper = styled.a<WrapperProps>`
   `};
 
   ${(props) => props.disabled && css`
-    pointer-events: none;
+    cursor: not-allowed;
 
     ${props.variant === 'primary' && css`
-      background: ${props.theme.color.quaternary};
-      color: ${props.theme.colorMono.white};
+      &, &:hover, &:focus {
+        background: ${hexToRgbMixin(props.theme.color.quaternary, 0.4)};
+        color: ${props.theme.colorMono.white};
+      }
     `};
 
     ${props.variant === 'secondary' && css`
-      background: transparent;
-      border: .2rem solid ${props.theme.color.quaternary};
-      color: ${props.theme.colorMono.black};
+      &, &:hover, &:focus {
+        background: transparent;
+        border: .2rem solid ${props.theme.colorGray.black12};
+        color: ${props.theme.colorGray.black12};
+      }
     `};
   `};
 `;
