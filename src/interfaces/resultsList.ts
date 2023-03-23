@@ -1,4 +1,4 @@
-import { Item } from './others';
+import { Item, ResponseElement } from './others';
 
 export interface IResultsList {
   loading: boolean;
@@ -6,5 +6,16 @@ export interface IResultsList {
   count: number;
   page: number;
   allPages: number;
-  incompleteResults: boolean;
+}
+
+export interface SearchResultsReturns {
+  count: number;
+  list: ResponseElement[];
+  page: number;
+  allPages: number;
+}
+
+export interface SearchResultsArguments {
+  value: string | null;
+  page: number;
 }

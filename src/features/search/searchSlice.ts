@@ -1,6 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import { IResultsList, ResponseElement, RootState } from 'interfaces';
+import {
+  IResultsList,
+  ResponseElement,
+  SearchResultsArguments,
+  SearchResultsReturns,
+  ThunkApiConfig
+} from 'interfaces';
 
 import { fetchSearch } from 'api';
 import { RESULTS_PER_PAGE } from 'constant';
@@ -10,28 +16,26 @@ const initialState: IResultsList = {
   list: [],
   count: 0,
   page: 0,
-  allPages: 0,
-  incompleteResults: true // needed?
+  allPages: 0
 };
 
 export const getSearchResults = createAsyncThunk<
-  any, { value: string | null, page: number }, { rejectValue: any, state: RootState }
+  SearchResultsReturns, SearchResultsArguments, ThunkApiConfig
   >(
   'resultsList/getSearchResults',
   async ({ value, page }, { rejectWithValue }) => fetchSearch(value, page)
     .then((response) => response.json())
-    .then((data: any) => {
-      const { items, total_count, incomplete_results } = data;
+    .then((data) => {
+      const { items, total_count } = data;
 
       return {
-        incompleteResults: incomplete_results,
         count: total_count,
         list: items,
         page,
         allPages: Math.ceil(total_count / RESULTS_PER_PAGE)
       };
     })
-    .catch((error: any) => rejectWithValue(error))
+    .catch((error) => rejectWithValue(error))
 );
 
 const resultsList = createSlice({
