@@ -28,9 +28,7 @@ const Search = (): JSX.Element => {
     <React.Fragment>
       <SearchComponent
         value={value}
-        onSearch={(event) => {
-          event.preventDefault();
-
+        onSearch={() => {
           dispatch(getSearchResults({ value, page: DEFAULT_PAGE }));
         }}
         onChange={(event) => {
