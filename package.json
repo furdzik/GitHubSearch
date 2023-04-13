@@ -34,7 +34,7 @@
     "@types/react-redux": "7.1.25",
     "editorconfig": "1.0.2",
     "ts-jest": "29.0.5",
-    "webpack": "5.75.0"
+    "webpack": "5.76.0"
   },
   "eslintConfig": {
     "extends": [
